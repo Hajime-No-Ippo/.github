@@ -1,4 +1,4 @@
-# 🏛️ Central Configuration Repository (`.github`)
+# 🏛️ .Github Repo
 
 > Welcome! This repository acts as the **global default configuration hub** for my GitHub account. 
 
