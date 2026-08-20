@@ -18,12 +18,7 @@ Settings, templates, and automated workflows stored here are automatically appli
 ### 📊 Account Dynamic Dashboard
 
 <div align="center">
-
-  <!-- Streak Stats Card (Dark Theme) -->
-<div align="center">
-  <a href="https://git.io/streak-stats"><img src="../Hajime-No-Ippo/profile/streak.svg" alt="GitHub Streak" /></a>
-</div>
-
+  <a href="https://git.io/streak-stats"><img src="./profile/streak.svg" alt="GitHub Streak" /></a>
 </div>
 
 ---
