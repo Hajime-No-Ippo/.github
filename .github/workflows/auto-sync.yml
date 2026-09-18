@@ -1,0 +1,38 @@
+name: Sync All Forks
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  load-config:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set-matrix
+        run: echo "matrix=$(jq -c . sync-config.json)" >> "$GITHUB_OUTPUT"
+
+  sync:
+    needs: load-config
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.load-config.outputs.matrix) }}
+    steps:
+      - name: Sync ${{ matrix.fork }} from ${{ matrix.upstream }}
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_PAT }}
+        run: |
+          git clone --branch "${{ matrix.branch }}" \
+            "https://x-access-token:${GH_TOKEN}@github.com/${{ matrix.fork }}.git" repo
+          cd repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote add upstream "https://github.com/${{ matrix.upstream }}.git"
+          git fetch upstream "${{ matrix.branch }}"
+          git merge "upstream/${{ matrix.branch }}" -m "chore: sync upstream"
+          git push origin "${{ matrix.branch }}"

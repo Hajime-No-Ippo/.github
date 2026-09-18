@@ -1,0 +1,7 @@
+[
+  { "fork": "Hajime-No-Ippo/UN-DigitalTrade-AI-Mapper", "upstream": "22abad/UN-DigitalTrade-AI-Mapper", "branch": "main" },
+  { "fork": "Hajime-No-Ippo/checkstyle", "upstream": "checkstyle/checkstyle", "branch": "master" },
+  { "fork": "Hajime-No-Ippo/basana", "upstream": "gbeced/basana", "branch": "develop" },
+  { "fork": "Hajime-No-Ippo/MaaAssistantArknights", "upstream": "MaaAssistantArknights/MaaAssistantArknights", "branch": "dev" },
+  { "fork": "Hajime-No-Ippo/coding-interview-university", "upstream": "jwasham/coding-interview-university", "branch": "main" }
+]
